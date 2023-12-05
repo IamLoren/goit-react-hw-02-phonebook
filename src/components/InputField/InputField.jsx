@@ -1,8 +1,12 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 
-export const InputField = ({nameState, handleNameChange}) => {
+export const InputField = ({nameState, handleNameChange, formSubmit, createContact}) => {
   return (
-    <input name='contactName' value={nameState} type="text" onChange={handleNameChange}/>
+    <form onSubmit={formSubmit}>
+        <label> Name
+       <input name='name' value={nameState} type="text" onChange={handleNameChange}/>     
+        </label> 
+        <button type='submit' onClick={createContact}>Add contact</button>
+    </form>    
   )
 }
