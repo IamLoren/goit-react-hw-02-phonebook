@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputField } from './InputField/InputField';
 import { ContactsList } from './contactsList/ContactsList';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 export class App extends React.Component {
 
