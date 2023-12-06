@@ -9,5 +9,5 @@
 .deleteBTN {
     display: block;
     width: 80px;
-    
+    cursor: pointer;
 }
