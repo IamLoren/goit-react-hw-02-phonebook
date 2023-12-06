@@ -7,12 +7,15 @@ export const ContactsList = ({ contacts, changeFilter, filterState, getFilteredD
     return ( 
     <>
    {children}
-    <ul>
+   {
+    filteredContacts.length === 0 
+    ? (<p>No contacts match your search</p>)
+    : ( <ul>
       {filteredContacts.map(({ id, name, number }) => (
         <ContactItem key={id} name={name} number={number} />
       ))}
-    </ul>
-    </>
-    
+    </ul>)
+   }
+    </>  
   );
 };
