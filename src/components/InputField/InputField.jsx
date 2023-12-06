@@ -2,14 +2,13 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 
 export class InputField extends React.Component {
-
-state = {
+  state = {
     name: '',
     number: '',
-}
+  };
 
-handleValueChange = (field, event) => {
-    this.setState({[field]: event.target.value});
+  handleValueChange = (field, event) => {
+    this.setState({ [field]: event.target.value });
   };
 
   createContact = event => {
@@ -19,24 +18,42 @@ handleValueChange = (field, event) => {
 
     const newContact = { name, number, id: nanoid(5) };
 
+    if (this.props.contacts.some(contact => contact.name === name)) {
+      alert(`Contact with the name ${name} already exists!`);
+      return;
+    }
+
     this.props.updateContactState(newContact);
 
     this.setState({ name: '', number: '' });
   };
 
-    render() {
-         return (
-    <form onSubmit={this.createContact}>
-        <label> Name
-       <input name='name' value={this.state.name} type="text" onChange={(event) => this.handleValueChange('name', event)}/>     
-        </label> 
-
-        <label>Number
-        <input name="number" value={this.state.number} type="tel" onChange={(event) => this.handleValueChange('number', event)}  required />
+  render() {
+    return (
+      <form onSubmit={this.createContact}>
+        <label>
+          {' '}
+          Name
+          <input
+            name="name"
+            value={this.state.name}
+            type="text"
+            onChange={event => this.handleValueChange('name', event)}
+          />
         </label>
-        <button type='submit'>Add contact</button>
-    </form>    
-  )
-    }
- 
+
+        <label>
+          Number
+          <input
+            name="number"
+            value={this.state.number}
+            type="tel"
+            onChange={event => this.handleValueChange('number', event)}
+            required
+          />
+        </label>
+        <button type="submit">Add contact</button>
+      </form>
+    );
+  }
 }
