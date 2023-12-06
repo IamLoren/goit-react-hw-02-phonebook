@@ -1,5 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import s from './InputField.module.css';
+
 
 export class InputField extends React.Component {
   state = {
@@ -30,28 +32,32 @@ export class InputField extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.createContact}>
-        <label>
-          Name
+      <form className={s.formInput} onSubmit={this.createContact}>
+        <label className={s.nameLabel}>
+          Name <br />
           <input
+          className={s.nameInput}
             name="name"
             value={this.state.name}
             type="text"
+            placeholder='Enter contact name'
             onChange={event => this.handleValueChange('name', event)}
           />
         </label>
 
-        <label>
-          Number
+        <label className={s.numberLabel}>
+          Number <br />
           <input
+          className={s.numberInput}
             name="number"
             value={this.state.number}
             type="tel"
+            placeholder='Enter contact number'
             onChange={event => this.handleValueChange('number', event)}
             required
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={s.searchBTN} type="submit">Add contact</button>
       </form>
     );
   }
