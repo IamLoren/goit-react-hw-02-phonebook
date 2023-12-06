@@ -32,7 +32,6 @@ export class InputField extends React.Component {
     return (
       <form onSubmit={this.createContact}>
         <label>
-          {' '}
           Name
           <input
             name="name"

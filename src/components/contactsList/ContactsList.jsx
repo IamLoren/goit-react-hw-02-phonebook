@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
-export const ContactsList = ({ contacts, changeFilter, filterState, getFilteredData, children }) => {
+export const ContactsList = ({ contacts, getFilteredData, children, deleteContact }) => {
   const filteredContacts = getFilteredData(contacts);
 
     return ( 
@@ -12,7 +12,7 @@ export const ContactsList = ({ contacts, changeFilter, filterState, getFilteredD
     ? (<p>No contacts match your search</p>)
     : ( <ul>
       {filteredContacts.map(({ id, name, number }) => (
-        <ContactItem key={id} name={name} number={number} />
+        <ContactItem key={id} id={id} name={name} number={number} deleteContact={deleteContact}/>
       ))}
     </ul>)
    }

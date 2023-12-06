@@ -15,6 +15,10 @@ export class App extends React.Component {
     filter: '',
   };
 
+  deleteContact = (id) => {
+    this.setState(prevState => ({contacts: prevState.contacts.filter(contact => contact.id !== id)}))
+  }
+
   updateContactState = (newContact) => {
     this.setState((prevState) => ({
       contacts: [...prevState.contacts, newContact],
@@ -49,7 +53,7 @@ export class App extends React.Component {
         <InputField contacts={this.state.contacts} updateContactState={this.updateContactState}/>
 
          <h2>Contacts</h2>
-        <ContactsList contacts={this.state.contacts} getFilteredData={this.getFilteredData}>
+        <ContactsList contacts={this.state.contacts} getFilteredData={this.getFilteredData} deleteContact={this.deleteContact}>
           <SearchFilter changeFilter={this.changeFilter} filterState={this.state.filter} />
         </ContactsList>
       </div>
